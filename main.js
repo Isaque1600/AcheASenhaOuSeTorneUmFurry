@@ -1,16 +1,15 @@
-function init() {
+const init = () => {
   const passwordInput = document.getElementById("password");
   const feedbackContainer = document.getElementById("feedback");
 
-  passwordInput.addEventListener("input", (e) => {
-    console.log(e.target.value);
+  const checkPasswordLength = (password) => {
+    const lengthFeedback = feedbackContainer.children[0].children[0];
+    lengthFeedback.textContent = password.length >= 5 ? "✅" : "❌";
+  };
 
-    if (e.target.value == "teste") {
-      feedbackContainer.innerHTML = "Senha correta!";
-    } else {
-      feedbackContainer.innerHTML = "Senha incorreta!";
-    }
+  passwordInput.addEventListener("input", (e) => {
+    checkPasswordLength(e.target.value);
   });
-}
+};
 
 init();
