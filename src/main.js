@@ -1,3 +1,5 @@
+import "./style.css";
+
 const init = () => {
   const passwordInput = document.getElementById("password");
   const feedbackContainer = document.getElementById("feedback");
