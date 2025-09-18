@@ -1,17 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/style.css">
     <title>Ache a Senha ou vire um furry</title>
   </head>
   <body>
-    <h1>Ache a Senha ou vire um furry!!</h1>
-    <input type="text" id="password" placeholder="Digite a senha" />
-    <div id="feedback">
-      <div id="rule-1">
-        <span id="status">❌</span>
-        <p id="message">A senha deve conter no mínimo 5 caracteres.</p>
+    <div id="container">
+      <h1>Crie a Senha ou vire um furry!!!</h1>
+      <h2>Crie uma senha satisfazendo todas as regras ou você se tornará um furry MWAHAHAHA.</h2>
+      <div id="game-container">
+        <input type="text" id="password" placeholder="Digite a senha" />
+        <div id="feedback">
+          <div id="rule-1">
+            <p id="message">A senha deve conter no mínimo 5 caracteres. <span id="status">❌</span></p>
+          </div>
+        </div>
       </div>
     </div>
     <script type="module" src="/src/main.js"></script>
