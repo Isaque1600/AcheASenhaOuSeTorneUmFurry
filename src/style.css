@@ -9,12 +9,13 @@
 * {
   padding: 0;
   margin: 0;
+  font-family: "Fredoka", sans-serif;
   box-sizing: border-box;
 }
 
 body {
+  padding: 10px;
   background-color: var(--bg-color);
-  font-family: "Fredoka", sans-serif;
   color: var(--text-color);
 }
 
@@ -33,12 +34,22 @@ p {
   margin: 20px 0;
 }
 
+#timer{
+  font-size: xx-large;
+}
+
 #container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+}
+
+#start-button {
+  font-size: 20px;
+  padding: 5px 10px;
+  border-radius: 10px;
 }
 
 #game-container {
@@ -76,6 +87,16 @@ input:focus {
 #logos-container > img {
   width: 80px;
   margin-right: 10px;
+}
+
+#lose-container p, #win-container p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#lose-container img, #win-container img {
+  width: 600px;
 }
 
 #active {
