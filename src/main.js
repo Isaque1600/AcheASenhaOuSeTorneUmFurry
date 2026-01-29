@@ -1,5 +1,7 @@
 import "./style.css";
 
+let time = 60;
+
 const init = () => {
   const passwordInput = document.getElementById("password");
   const feedbackContainer = document.getElementById("feedback");
@@ -104,6 +106,28 @@ const init = () => {
   });
 };
 
+const timerDiv = document.getElementById("timer");
 
+const contador = () => {
+
+  const hours = String(Math.floor(time / 3600)).padStart(2, "0");
+  const minutes = String(Math.floor((time % 3600) / 60)).padStart(2, "0");
+  const seconds = String(time % 60).padStart(2, "0");
+
+  timerDiv.textContent = `${hours}:${minutes}:${seconds}`;
+
+  if (time === 0) {
+
+    const loseContainer = document.getElementById("lose-container")
+
+    loseContainer.removeAttribute("hidden");
+
+    clearInterval(intervalId);
+  }
+
+  time--;
+};
+
+const intervalId = setInterval(contador, 1000);
 
 init();
