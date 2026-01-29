@@ -11,6 +11,11 @@
     <title>Ache a Senha ou vire um furry</title>
   </head>
   <body>
+
+    <header>
+      <div id="timer">00:00:00</div>
+    </header>
+
     <div id="container">
       <h1>Crie a Senha ou vire um furry!!!</h1>
       <h2>
@@ -84,8 +89,27 @@
               />
             </div>
           </div>
+          
+          <div id="rule-8">
+            <p>A senha deve ser um email <span id="status">❌</span></p>
+          </div>
+
+          <div id="rule-9">
+            <p>A senha deve conter um conter um algarismo romano <span id="status">❌</span></p>
+          </div>
+
+          <div id="rule-10">
+            <p>Deve ter um ano bissexto na senha <span id="status">❌</span></p>
+          </div>
+
         </div>
       </div>
+
+      <div id="lose-container" hidden>
+        <p>É uma pena, infelizmente você se tornou um furry</p>
+        <img src="/lose-photo.webp">
+      </div>
+
     </div>
     <script type="module" src="/src/main.js"></script>
   </body>
