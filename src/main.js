@@ -32,8 +32,10 @@ const displayTimer = () => {
 
     if (time === 0) {
       const loseContainer = document.getElementById("lose-container");
+      const passwordInput = document.getElementById("password");
 
       loseContainer.removeAttribute("hidden");
+      passwordInput.setAttribute("disabled", "true");
 
       clearInterval(intervalId);
     }
@@ -70,9 +72,21 @@ const gameScreen = () => {
     return allCorrect;
   };
 
-  const displayRule = (ruleId, canDisplay) => {
+  const displayRule = (ruleId) => {
     const ruleElement = document.getElementById(ruleId);
-    if (canDisplay) {
+    const ruleNumber = parseInt(ruleId.split("-")[1], 10);
+    let allPrevOk = true;
+    for (let i = 1; i < ruleNumber; i++) {
+      const prevRuleElement = document.getElementById(`rule-${i}`).children[0]
+        .children;
+      const prevStatus =
+        prevRuleElement[prevRuleElement.length - 1].textContent;
+      if (prevStatus !== "✅") {
+        allPrevOk = false;
+        break;
+      }
+    }
+    if (allPrevOk) {
       ruleElement.classList.remove("hidden");
       ruleElement.classList.add("active");
     }
@@ -82,14 +96,14 @@ const gameScreen = () => {
     const lengthFeedback =
       document.getElementById("rule-1").children[0].children[0];
     lengthFeedback.textContent = password.length >= 5 ? "✅" : "❌";
-    displayRule("rule-2", password.length >= 5);
+    displayRule("rule-2");
   };
 
   const checkPasswordHaveNumber = (password) => {
     const ruleTwoStatus =
       document.getElementById("rule-2").children[0].children[0];
     ruleTwoStatus.textContent = password.match(/\d+/) ? "✅" : "❌";
-    displayRule("rule-3", password.match(/\d+/));
+    displayRule("rule-3");
   };
 
   const checkPasswordHaveSpecialCharacters = (password) => {
@@ -98,14 +112,14 @@ const gameScreen = () => {
     ruleThreeStatus.textContent = password.match(/[^a-zA-Z0-9\s]/)
       ? "✅"
       : "❌";
-    displayRule("rule-4", password.match(/[^a-zA-Z0-9\s]/));
+    displayRule("rule-4");
   };
 
   const checkPasswordHaveLetterInUpperCase = (password) => {
     const ruleFourStatus =
       document.getElementById("rule-4").children[0].children[0];
     ruleFourStatus.textContent = password.match(/[A-Z]/) ? "✅" : "❌";
-    displayRule("rule-5", password.match(/[A-Z]/));
+    displayRule("rule-5");
   };
 
   const checkTeacherName = (password) => {
@@ -126,7 +140,7 @@ const gameScreen = () => {
       lowerCasePassword.includes(name),
     );
     ruleFiveStatus.textContent = containsName.length > 0 ? "✅" : "❌";
-    displayRule("rule-6", containsName.length > 0);
+    displayRule("rule-6");
   };
 
   const checkSumToRandom = (password) => {
@@ -136,7 +150,7 @@ const gameScreen = () => {
     const digits = password.match(/\d/g) || [];
     const sum = digits.reduce((acc, curr) => acc + parseInt(curr, 10), 0);
     ruleSixStatus.textContent = sum === number ? "✅" : "❌";
-    displayRule("rule-7", sum === number);
+    displayRule("rule-7");
   };
 
   const checkLogosNames = (password) => {
@@ -149,14 +163,14 @@ const gameScreen = () => {
       lowerCasePassword.includes(name),
     );
     ruleSevenStatus.textContent = containsLogoName ? "✅" : "❌";
-    displayRule("rule-8", containsLogoName);
+    displayRule("rule-8");
   };
 
   const checkPasswordIsEmail = (password) => {
     const ruleEitghStatus =
       document.getElementById("rule-8").children[0].children[0];
     ruleEitghStatus.textContent = password.match(/.+@.+\.com$/) ? "✅" : "❌";
-    displayRule("rule-9", password.match(/.+@.+\.com$/));
+    displayRule("rule-9");
   };
 
   const checkPasswordHaveRomanNumeral = (password) => {
@@ -164,7 +178,7 @@ const gameScreen = () => {
       document.getElementById("rule-9").children[0].children[0];
     const hasRoman = /[IVXLCDM]/.test(password);
     ruleNineStatus.textContent = hasRoman ? "✅" : "❌";
-    displayRule("rule-10", hasRoman);
+    displayRule("rule-10");
   };
 
   const checkPasswordHaveLeapYear = (password) => {
@@ -175,15 +189,9 @@ const gameScreen = () => {
     )
       ? "✅"
       : "❌";
-    displayRule(
-      "rule-10",
-      password.match(
-        /(?:(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26]))|(?:0[48]|[2468][048]|[13579][26])00)/,
-      ),
-    );
+    displayRule("rule-10");
   };
 
-  const loseContainer = document.getElementById("lose-container");
   const winContainer = document.getElementById("win-container");
 
   passwordInput.addEventListener("input", (e) => {
@@ -200,16 +208,10 @@ const gameScreen = () => {
 
     if (checkAllCorrect()) {
       winContainer.removeAttribute("hidden");
+      passwordInput.setAttribute("disabled", "true");
       clearInterval(intervalId);
     }
   });
-
-  if (
-    !loseContainer.hasAttribute("hidden") ||
-    !winContainer.hasAttribute("hidden")
-  ) {
-    passwordInput.setAttribute("disabled", "true");
-  }
 };
 
 init();
