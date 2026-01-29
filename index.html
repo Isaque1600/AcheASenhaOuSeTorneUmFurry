@@ -11,7 +11,6 @@
     <title>Ache a Senha ou vire um furry</title>
   </head>
   <body>
-
     <header>
       <div id="timer">00:00:00</div>
     </header>
@@ -32,41 +31,41 @@
             </p>
           </div>
 
-          <div id="rule-2">
+          <div id="rule-2" class="hidden">
             <p id="message">
               A senha deve ter pelo menos 1 número. <span id="status">❌</span>
             </p>
           </div>
 
-          <div id="rule-3">
+          <div id="rule-3" class="hidden">
             <p id="message">
               A senha deve conter caracteres especiais.
               <span id="status">❌</span>
             </p>
           </div>
 
-          <div id="rule-4">
+          <div id="rule-4" class="hidden">
             <p id="message">
               A senha deve conter caracteres em maiúsculo.
               <span id="status">❌</span>
             </p>
           </div>
 
-          <div id="rule-5">
+          <div id="rule-5" class="hidden">
             <p id="message">
               A senha deve conter o nome de um professor do curso.
               <span id="status">❌</span>
             </p>
           </div>
 
-          <div id="rule-6">
+          <div id="rule-6" class="hidden">
             <p id="message">
               Os números na senha devem somar até
               <span id="random-number"></span>. <span id="status">❌</span>
             </p>
           </div>
 
-          <div id="rule-7">
+          <div id="rule-7" class="hidden">
             <p id="message">
               A senha deve conter um dos nomes das logos.
               <span id="status">❌</span>
@@ -89,27 +88,28 @@
               />
             </div>
           </div>
-          
-          <div id="rule-8">
+
+          <div id="rule-8" class="hidden">
             <p>A senha deve ser um email <span id="status">❌</span></p>
           </div>
 
-          <div id="rule-9">
-            <p>A senha deve conter um conter um algarismo romano <span id="status">❌</span></p>
+          <div id="rule-9" class="hidden">
+            <p>
+              A senha deve conter um conter um algarismo romano
+              <span id="status">❌</span>
+            </p>
           </div>
 
-          <div id="rule-10">
+          <div id="rule-10" class="hidden">
             <p>Deve ter um ano bissexto na senha <span id="status">❌</span></p>
           </div>
-
         </div>
       </div>
 
       <div id="lose-container" hidden>
         <p>É uma pena, infelizmente você se tornou um furry</p>
-        <img src="/lose-photo.webp">
+        <img src="/lose-photo.webp" />
       </div>
-
     </div>
     <script type="module" src="/src/main.js"></script>
   </body>
