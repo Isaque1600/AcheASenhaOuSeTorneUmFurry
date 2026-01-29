@@ -1,67 +1,79 @@
 :root {
-    --bg-color: #fef6e4;
-    --container-bg: #ffe5ec;
-    --border-color: #ffb3c6;
-    --text-color: #3f3f3f;
-    --muted-color: #7d7d7d;
+  --bg-color: #fef6e4;
+  --container-bg: #ffe5ec;
+  --border-color: #ffb3c6;
+  --text-color: #3f3f3f;
+  --muted-color: #7d7d7d;
 }
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: var(--bg-color);
-    font-family: "Fredoka", sans-serif;
-    color: var(--text-color);
+  background-color: var(--bg-color);
+  font-family: "Fredoka", sans-serif;
+  color: var(--text-color);
 }
 
 h1 {
-    font-size: 30px;
-    font-weight: 500;
+  font-size: 30px;
+  font-weight: 500;
 }
 
 h2 {
-    font-size: 20px;
-    font-weight: 500;
+  font-size: 20px;
+  font-weight: 500;
 }
 
-h2, p {
-    margin: 20px 0;
+h2,
+p {
+  margin: 20px 0;
 }
 
 #container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
 #game-container {
-    width: 600px;
-    background-color: var(--container-bg);
-    border: 2px solid var(--border-color);
-    border-radius: 8px;
-    padding: 15px 25px;
+  width: 600px;
+  background-color: var(--container-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  padding: 15px 25px;
 }
 
 input {
-    width: 100%;
-    background-color: var(--container-bg);
-    border: 2px solid var(--border-color);
-    border-radius: 4px;
-    padding: 10px;
-    font-size: 16px;
-    color: var(--text-color);
+  width: 100%;
+  background-color: var(--container-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
+  color: var(--text-color);
 }
 
 input::placeholder {
-    color: var(--muted-color);
+  color: var(--muted-color);
 }
 
 input:focus {
-    outline: none;
+  outline: none;
+}
+
+#logos-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+#logos-container > img {
+  width: 80px;
+  margin-right: 10px;
 }

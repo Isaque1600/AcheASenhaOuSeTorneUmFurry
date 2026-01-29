@@ -1,36 +1,89 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="src/style.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/style.css" />
     <title>Ache a Senha ou vire um furry</title>
   </head>
   <body>
     <div id="container">
       <h1>Crie a Senha ou vire um furry!!!</h1>
-      <h2>Crie uma senha satisfazendo todas as regras ou você se tornará um furry MWAHAHAHA.</h2>
+      <h2>
+        Crie uma senha satisfazendo todas as regras ou você se tornará um furry
+        MWAHAHAHA.
+      </h2>
       <div id="game-container">
         <input type="text" id="password" placeholder="Digite a senha" />
         <div id="feedback">
-          
           <div id="rule-1">
-            <p id="message">A senha deve conter no mínimo 5 caracteres. <span id="status">❌</span></p>
+            <p id="message">
+              A senha deve conter no mínimo 5 caracteres.
+              <span id="status">❌</span>
+            </p>
           </div>
 
           <div id="rule-2">
-            <p id="message">A senha deve ter pelo menos 1 número. <span id="status">❌</span></p>
+            <p id="message">
+              A senha deve ter pelo menos 1 número. <span id="status">❌</span>
+            </p>
           </div>
 
           <div id="rule-3">
-            <p id="message">A senha deve conter caracteres especiais. <span id="status">❌</span></p>
+            <p id="message">
+              A senha deve conter caracteres especiais.
+              <span id="status">❌</span>
+            </p>
           </div>
 
           <div id="rule-4">
-            <p id="message">A senha deve conter caracteres em maiúsculo. <span id="status">❌</span></p>
+            <p id="message">
+              A senha deve conter caracteres em maiúsculo.
+              <span id="status">❌</span>
+            </p>
           </div>
 
+          <div id="rule-5">
+            <p id="message">
+              A senha deve conter o nome de um professor do curso.
+              <span id="status">❌</span>
+            </p>
+          </div>
+
+          <div id="rule-6">
+            <p id="message">
+              Os números na senha devem somar até
+              <span id="random-number"></span>. <span id="status">❌</span>
+            </p>
+          </div>
+
+          <div id="rule-7">
+            <p id="message">
+              A senha deve conter um dos nomes das logos.
+              <span id="status">❌</span>
+            </p>
+            <div id="logos-container">
+              <img
+                src="./src/assets/images/claude.png"
+                alt="claude logo"
+                id="logo-claude"
+              />
+              <img
+                src="./src/assets/images/gemini.png"
+                alt="gemini logo"
+                id="logo-gemini"
+              />
+              <img
+                src="./src/assets/images/ollama.png"
+                alt="ollama logo"
+                id="logo-ollama"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
