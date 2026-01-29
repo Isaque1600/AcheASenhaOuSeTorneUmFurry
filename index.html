@@ -12,7 +12,7 @@
   </head>
   <body>
     <header>
-      <div id="timer">00:00:00</div>
+      <div id="timer" hidden>00:00:00</div>
     </header>
 
     <div id="container">
@@ -21,7 +21,12 @@
         Crie uma senha satisfazendo todas as regras ou você se tornará um furry
         MWAHAHAHA.
       </h2>
-      <div id="game-container">
+
+      <div id="start-container">
+        <button id="start-button">Iniciar Jogo</button>
+      </div>
+
+      <div id="game-container" hidden>
         <input type="text" id="password" placeholder="Digite a senha" />
         <div id="feedback">
           <div id="rule-1">
@@ -108,7 +113,13 @@
 
       <div id="lose-container" hidden>
         <p>É uma pena, infelizmente você se tornou um furry</p>
-        <img src="/lose-photo.webp" />
+        <img src="/src/assets/images/lose-photo.webp" />
+      </div>
+      <div id="win-container" hidden>
+        <p>
+          Parabéns! Você conseguiu criar a senha e se livrar de virar um furry!
+        </p>
+        <img src="/src/assets/images/win-image.jpg" />
       </div>
     </div>
     <script type="module" src="/src/main.js"></script>

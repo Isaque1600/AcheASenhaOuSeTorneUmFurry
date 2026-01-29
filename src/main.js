@@ -1,15 +1,74 @@
 import "./style.css";
 
 let time = 60;
+let intervalId;
 
 const init = () => {
+  const startButton = document.getElementById("start-button");
+
+  startButton.addEventListener("click", () => {
+    const startContainer = document.getElementById("start-container");
+    const gameContainer = document.getElementById("game-container");
+
+    startContainer.setAttribute("hidden", "");
+    gameContainer.removeAttribute("hidden");
+    displayTimer();
+    gameScreen();
+  });
+};
+
+const displayTimer = () => {
+  const timerDiv = document.getElementById("timer");
+
+  const contador = () => {
+    const hours = String(Math.floor(time / 3600)).padStart(2, "0");
+    const minutes = String(Math.floor((time % 3600) / 60)).padStart(2, "0");
+    const seconds = String(time % 60).padStart(2, "0");
+
+    timerDiv.textContent = `${hours}:${minutes}:${seconds}`;
+    if (timerDiv.hasAttribute("hidden")) {
+      timerDiv.removeAttribute("hidden");
+    }
+
+    if (time === 0) {
+      const loseContainer = document.getElementById("lose-container");
+
+      loseContainer.removeAttribute("hidden");
+
+      clearInterval(intervalId);
+    }
+
+    time--;
+  };
+
+  intervalId = setInterval(contador, 1000);
+};
+
+const gameScreen = () => {
   const passwordInput = document.getElementById("password");
-  const feedbackContainer = document.getElementById("feedback");
 
   const randomNumberElement = document.getElementById("random-number");
   const number = Math.floor(Math.random() * (30 - 10 + 1)) + 10;
 
   randomNumberElement.textContent = number;
+
+  const checkAllCorrect = () => {
+    const rules = [];
+    for (let i = 1; i <= 10; i++) {
+      const ruleElement = document.getElementById(`rule-${i}`);
+      const rulesChildrens = ruleElement.children[0].children;
+      const status = rulesChildrens[rulesChildrens.length - 1].textContent;
+      console.log(status);
+      rules.push(status === "✅");
+    }
+
+    const allCorrect = rules.every((rule) => rule === true);
+
+    console.log("Rules status:", rules);
+    console.log("All rules correct:", allCorrect);
+
+    return allCorrect;
+  };
 
   const displayRule = (ruleId, canDisplay) => {
     const ruleElement = document.getElementById(ruleId);
@@ -124,6 +183,9 @@ const init = () => {
     );
   };
 
+  const loseContainer = document.getElementById("lose-container");
+  const winContainer = document.getElementById("win-container");
+
   passwordInput.addEventListener("input", (e) => {
     checkPasswordLength(e.target.value);
     checkPasswordHaveNumber(e.target.value);
@@ -135,29 +197,19 @@ const init = () => {
     checkPasswordIsEmail(e.target.value);
     checkPasswordHaveRomanNumeral(e.target.value);
     checkPasswordHaveLeapYear(e.target.value);
+
+    if (checkAllCorrect()) {
+      winContainer.removeAttribute("hidden");
+      clearInterval(intervalId);
+    }
   });
-};
 
-const timerDiv = document.getElementById("timer");
-
-const contador = () => {
-  const hours = String(Math.floor(time / 3600)).padStart(2, "0");
-  const minutes = String(Math.floor((time % 3600) / 60)).padStart(2, "0");
-  const seconds = String(time % 60).padStart(2, "0");
-
-  timerDiv.textContent = `${hours}:${minutes}:${seconds}`;
-
-  if (time === 0) {
-    const loseContainer = document.getElementById("lose-container");
-
-    loseContainer.removeAttribute("hidden");
-
-    clearInterval(intervalId);
+  if (
+    !loseContainer.hasAttribute("hidden") ||
+    !winContainer.hasAttribute("hidden")
+  ) {
+    passwordInput.setAttribute("disabled", "true");
   }
-
-  time--;
 };
-
-const intervalId = setInterval(contador, 1000);
 
 init();
